@@ -16,6 +16,6 @@ public class Person
     }
     public void WesternStyleName()
     {
-        Console.WriteLine($"{this.givenName}, {this.familyName}");
+        Console.WriteLine($"{this.familyName} {this.givenName}");
     }
 }
