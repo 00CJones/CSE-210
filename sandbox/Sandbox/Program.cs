@@ -4,19 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        //using System
+        Account account = new Account();
 
+        Console.WriteLine($"You have ${account.GetAccountBalance()}");
 
-        //This is equivalent to Python print
-        Console.WriteLine("Hello, what is your name?");
+        account.Withdraw();
 
-        //this is equivalent to Python's input function
-        string name = Console.ReadLine();
-
-        //This is equivalent to Python's f-string
-        Console.WriteLine($"Hello, {name}!");
-
-        Console.Write("Enter your age");
-        int age = int.Parse(Console.ReadLine());
+        Console.WriteLine($"You have ${account.GetAccountBalance()}");
     }
 }
