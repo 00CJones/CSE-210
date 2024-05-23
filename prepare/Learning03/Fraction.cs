@@ -48,7 +48,7 @@ public class Fraction
     }
     public double GetDecimalValue()
     {
-        double Decimal = (double) top / bottom;
+        double Decimal = (double) top / bottom; //remember to put the double again for this operation
         return Decimal;
     }
 }
