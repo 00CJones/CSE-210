@@ -15,6 +15,5 @@ class Program
         WritingAssignment w1 = new WritingAssignment("Emily", "English 101", "Final REsearch Paper");
         Console.WriteLine(w1.GetSummary());
         Console.WriteLine(w1.GetWritingInformation());
-
     }
 }

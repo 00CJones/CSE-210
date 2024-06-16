@@ -41,36 +41,6 @@ abstract class Activity
             Console.Write("\b \b");
         }
     }
-    public virtual void breatheInCountdown(int seconds)
-    {
-        for (int i = seconds; i > 0; i--)
-        {
-            Console.Write($".{i}");
-            Thread.Sleep(1000);
-            Console.Write("\b");
-        }
-    }
-    public virtual void breatheOutCountdown(int seconds)
-    {
-        for (int i = seconds; i > 0; i--)
-        {
-            // Print dots for shrinking effect
-            Console.Write(new string('.', i));
-            
-            // Calculate the position to write the number
-            int numberLength = i.ToString().Length;
-            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
-            Console.Write(i); // Write the countdown number
-            
-            Thread.Sleep(1000);
-            
-            // Move the cursor back and overwrite the previous dots and number
-            for (int j = 0; j < i + numberLength; j++)
-            {
-                Console.Write("\b \b");
-            }
-        }
-    }
     
     public virtual void DisplayStartingMessage()
     {
