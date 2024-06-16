@@ -41,6 +41,24 @@ abstract class Activity
             Console.Write("\b \b");
         }
     }
+    public virtual void breatheOutCountdown(int seconds)
+    {
+        for (int i = seconds; i > 0; i--)
+        {
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b\b \b");
+        }
+    }
+    public virtual void breatheInCountdown(int seconds)
+    {
+        for (int i = seconds; i > 0; i--)
+        {
+            Console.Write($".{i}");
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
+    }    
     
     public virtual void DisplayStartingMessage()
     {

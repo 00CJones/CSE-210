@@ -4,8 +4,8 @@ class Breathing : Activity
     public override void PerformActivity(int seconds)
     {
         int totalSeconds = seconds;
-        int breatheInSeconds = 4;
-        int breatheOutSeconds = 6;
+        int breatheInSeconds = 5;
+        int breatheOutSeconds = 5;
         int cycleDuration = breatheInSeconds + breatheOutSeconds;
         int remainder = totalSeconds % 10;
         int halfRemainder = remainder / 2;
@@ -18,9 +18,9 @@ class Breathing : Activity
             {
                 Console.WriteLine("");
                 Console.Write("\nBreathe in...");
-                Countdown(halfRemainder);
-                Console.Write("\nBreathe out...");
-                Countdown(halfRemainder);
+                breatheInCountdown(halfRemainder);
+                Console.Write("\nBreathe out.....");
+                breatheOutCountdown(halfRemainder);
                 totalSeconds -= remainder;
                 remainder = 0;
                 
@@ -30,11 +30,11 @@ class Breathing : Activity
             {
                 Console.WriteLine("");
                 Console.Write("\nBreathe in...");
-                Countdown(breatheInSeconds);
+                breatheInCountdown(breatheInSeconds);
                 totalSeconds -= breatheInSeconds;
 
-                Console.Write("\nBreathe out...");
-                Countdown(breatheOutSeconds);
+                Console.Write("\nBreathe out.......");
+                breatheOutCountdown(breatheOutSeconds);
                 totalSeconds -= breatheOutSeconds;
             }
         }
