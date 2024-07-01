@@ -4,6 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop05 World!");
+        Menu menu = new Menu{};
+        bool keepRunning = true;
+        while(keepRunning)
+        {
+            keepRunning = menu.RunMenu();
+        }
     }
 }
