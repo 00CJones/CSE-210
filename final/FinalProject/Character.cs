@@ -10,8 +10,47 @@ public abstract class Character
     protected List<Weapon> weaponsList;
     protected int hitPoints;
     protected List<Weapon> equippedWeapons;
+    protected List<Ability> abilities;
+    protected Ability equippedAbility;
     protected bool attackStatus;
 
+    public Character(string name, int hitpoints)
+    {
+        this.name = name;
+        this.hitPoints = hitpoints;
+        this.abilities = new List<Ability>();
+        this.weaponsList = new List<Weapon>();
+    }
+    public Character(string name, int hitpoints, Ability ability)
+    {
+        this.name = name;
+        this.hitPoints = hitpoints;
+        this.abilities = new List<Ability>();
+        abilities.Add(ability);
+        this.weaponsList = new List<Weapon>();
+    }
+
+    public void EquipAbility(Ability ability)
+    {
+        this.equippedAbility = ability;
+        Console.WriteLine($"{ability.GetName()} equipped.");
+    }
+    public Ability GetEquippedAbility()
+    {
+        return equippedAbility;
+    }
+    public List<Weapon> GetWeaponsList()
+    {
+        return weaponsList;
+    }
+    public List<Ability> GetAbilitiesList()
+    {
+        return abilities;
+    }
+    public void SetAbilitiesList(List<Ability> list)
+    {
+        this.abilities = list;
+    }
     public void SetAttackStatus(bool status)
     {
         this.attackStatus = status;
@@ -21,18 +60,21 @@ public abstract class Character
         return attackStatus;
     }
 
-    public Character(string name, int hitpoints)
-    {
-        this.name = name;
-        this.hitPoints = hitpoints;
-    }
     public Weapon GetAttackWeapon()
     {
         return attackWeapon;
     }
+    public void SetAttackWeapon(Weapon attackWeapon)
+    {
+        this.attackWeapon = attackWeapon;
+    }
     public Weapon GetDefenseWeapon()
     {
         return defenseWeapon;
+    }
+    public void SetDefenseWeapon(Weapon defenseWeapon)
+    {
+        this.defenseWeapon = defenseWeapon;
     }
     public string GetName()
     {
@@ -99,6 +141,10 @@ public abstract class Character
                 SetHealth(0);
                 Console.WriteLine($"{this.GetName()} defeated!");
             }           
+        }
+        else
+        {
+            Console.WriteLine($"{this.GetName()} blocked with {defendingWeapon.GetName()}!");
         }
     }
     public override string ToString()

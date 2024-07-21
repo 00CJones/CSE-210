@@ -31,7 +31,7 @@ public abstract class Weapon
 
     public override string ToString()
     {
-        return $"{weaponName} (Attack: {weaponAttack}, Defense: {weaponDefense})";
+        return $"| {weaponName} | Attack: {weaponAttack} | Defense: {weaponDefense} |";
     }
 }
 

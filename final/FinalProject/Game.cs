@@ -5,19 +5,29 @@ public class Game
     Random random = new Random();
     private bool attack = true;
     private bool defend = false;
+    private List<Weapon> enemyweapons;
+    private List<Weapon> player1weapons;
 
-    private string[] battleModeMenu = {
+    private List<string> battleModeMenu = [
         "Attack",
         "Defend",
-        "Do Nothing"
-    };
+    ];
     public void BattleMode(Character player1, Enemy enemy)
     {
-        while (enemy.GetHealth() > 0)
+        List<Ability> abilities = player1.GetAbilitiesList();
+        if (abilities.Any(a => a is Dodge))
+        {
+            if (!battleModeMenu.Contains("Dodge"))
+            {
+                battleModeMenu.Add("Dodge");
+            }
+        }
+        // Console.WriteLine("Made it to battle mode");
+        while (enemy.GetHealth() > 0 && player1.GetHealth() > 0)
         {
             Console.WriteLine(player1);
             Console.WriteLine(enemy);
-            for (int i = 0; i < battleModeMenu.Length; i++)
+            for (int i = 0; i < battleModeMenu.Count; i++)
             {
                 Console.WriteLine($"    {i + 1}. {battleModeMenu[i]}");
             }
@@ -37,8 +47,17 @@ public class Game
                     EnemyAttack(enemy, player1, enemyAttackStatus, player1.GetAttackStatus());
                     break;
                 case 3:
+                   if (battleModeMenu.Contains("Dodge"))
+                    {
+                        Ability dodge = abilities.FirstOrDefault(a => a is Dodge);
+                        dodge?.Use(player1, player1.GetHealth());
+                    }
                     break;
             }
+        }
+        if (player1.GetHealth() != 0)
+        {
+            StealWeapons(player1, enemy);
         }
     }
     public void EnemyAttack(Character enemy, Character player1, bool enemyAttackStatus, bool player1AttackStatus)
@@ -50,6 +69,18 @@ public class Game
             {
                 enemy.Attack(player1, enemy.GetAttackWeapon(), player1AttackStatus);
             }
+        }
+    }
+
+    public void StealWeapons(Character player1, Character enemy)
+    {
+        enemyweapons = new List<Weapon>();
+        player1weapons = new List<Weapon>();
+        enemyweapons = enemy.GetWeaponsList();
+        player1weapons = player1.GetWeaponsList();
+        for (int i = 0; i < enemyweapons.Count(); i++)
+        {
+            player1weapons.Add(enemyweapons[i]);
         }
     }
 }

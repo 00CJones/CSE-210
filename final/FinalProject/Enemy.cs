@@ -12,6 +12,12 @@ public class Enemy : Character
     {
         this.attackWeapon = attackWeapon;
         this.defenseWeapon = defenseWeapon;
+        this.weaponsList = new List<Weapon>();
+        weaponsList.Add(attackWeapon);
+        if (!attackWeapon.Equals(defenseWeapon))
+        {
+            weaponsList.Add(defenseWeapon);
+        }
         this.attackStatus = true;
     }
     public bool GenerateEnemyAttackStatus(Random random)
@@ -33,15 +39,5 @@ public class Enemy : Character
     {
         return GenerateEnemyAttackStatus(random);
     }
-
-    public Enemy(string name, int hitpoints, Weapon attackWeapon) : base(name, hitpoints)
-    {
-        this.attackWeapon = attackWeapon;
-    }
-
-    // public override void Attack(Character character, Weapon weapon)
-    // {
-
-    // }
 
 }
