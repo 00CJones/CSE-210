@@ -56,7 +56,7 @@ public class WeaponsManager
     }
     public void Run(Character player)
     {
-
+        browseWeapons = true;
         while (browseWeapons)
         {
             Console.WriteLine("Inventory Options:");

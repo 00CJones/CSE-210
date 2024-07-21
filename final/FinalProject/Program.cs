@@ -21,7 +21,7 @@ class Program
 
         Player1 player1 = new Player1("Player 1", 10, sword, shield, none);
         Enemy goblin = new Enemy("Goblin", 10, goblinsword, goblinsword);
-        Enemy orc = new Enemy("Orc", 14, orcsword, orcsword);
+        Enemy orc = new Enemy("Orc", 14, orcsword, bigsword);
         Villager oldman = new Villager("Old Man", 10, dodge);
         Enemy darknight = new Enemy("Dark Knight", 16, mace, mace);
 

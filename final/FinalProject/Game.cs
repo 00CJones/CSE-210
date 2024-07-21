@@ -59,6 +59,13 @@ public class Game
         {
             StealWeapons(player1, enemy);
         }
+        if (enemy.GetName() == "Dark Knight")
+        {
+            if(enemy.GetHealth() == 0)
+            {
+                Console.WriteLine("Congratulations adventurer! You defeated the Dark Knight. Narnia is free once again. Thank you for your help!");
+            }
+        }
     }
     public void EnemyAttack(Character enemy, Character player1, bool enemyAttackStatus, bool player1AttackStatus)
     {
